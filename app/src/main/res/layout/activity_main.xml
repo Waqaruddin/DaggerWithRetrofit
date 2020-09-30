@@ -2,6 +2,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
+    android:background="#EEE0E5"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
@@ -13,7 +14,7 @@
         android:textColor="#000"
         android:padding="10dp"/>
 
-<androidx.recyclerview.widget.RecyclerView
+  <androidx.recyclerview.widget.RecyclerView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/recycler_view"/>
