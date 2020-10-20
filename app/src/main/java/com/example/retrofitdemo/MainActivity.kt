@@ -13,17 +13,25 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.http.GET
-
-
-
+import javax.inject.Inject
 
 
 class MainActivity : AppCompatActivity() {
+
+
+//    @Inject
+//    lateinit var retrofit: Retrofit
+
+    @Inject
+    lateinit var service: GitHubService
+
     var mList:ArrayList<Users> = ArrayList()
      var adapterUsers:AdapterUsers? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        (application as MyApplication).applicationComponent.inject(this)
 
         init()
 
@@ -38,13 +46,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getData() {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://grocery-second-app.herokuapp.com/")
-//                .addConverterFactory(ScalarsConverterFactory.create()) /// for getting data as string
-            .addConverterFactory(GsonConverterFactory.create()) /// for getting data as class
-            .build()
+//        val retrofit = Retrofit.Builder()
+//            .baseUrl("https://grocery-second-app.herokuapp.com/")
+////                .addConverterFactory(ScalarsConverterFactory.create()) /// for getting data as string
+//            .addConverterFactory(GsonConverterFactory.create()) /// for getting data as class
+//            .build()
 
-        val service:GitHubService = retrofit.create(GitHubService::class.java)
+       // retrofit
+
+       // val service:GitHubService = retrofit.create(GitHubService::class.java)
         val call = service.getData()
         Log.d("abc", call.toString())
 
